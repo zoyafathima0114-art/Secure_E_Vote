@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 420px;
+            background: rgba(255,255,255,0.95);
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+            animation: slideIn 0.8s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        img {
+            width: 110px;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #aaa;
+            font-size: 16px;
+            margin-top: 15px;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #203a43;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #0f2027;
+            transform: translateY(-2px);
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/2913/2913597.png" alt="OTP Icon">
+
+    <h2>Enter OTP</h2>
+
+    {% if messages %}
+        {% for msg in messages %}
+            <p class="error">{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" onsubmit="return validateOTP()">
+        {% csrf_token %}
+        <input type="text" id="otp" name="otp" placeholder="6-digit code" maxlength="6">
+        <button type="submit">Verify</button>
+    </form>
+</div>
+
+<script>
+function validateOTP() {
+    let otp = document.getElementById("otp").value.trim();
+
+    if (otp === "") {
+        alert("OTP cannot be empty!");
+        return false;
+    }
+
+    if (!/^[0-9]{6}$/.test(otp)) {
+        alert("OTP must be exactly 6 digits.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title_bl %}Blockchain Voting{% endblock %}</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Global CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+
+            /* SOFT GRADIENT BACKGROUND (DARK → LIGHT SO TEXT IS VISIBLE) */
+            background: linear-gradient(145deg, #e3eef9, #c6d8ee);
+            min-height: 100vh;
+            color: #000;  /* BLACK TEXT */
+        }
+
+        .navbar {
+            background: #1d3557;
+            padding: 18px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 { 
+            margin: 0; 
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 8px 15px;
+            border-radius: 6px;
+            background: #e63946;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #ff5c67;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            margin-top: 40px;
+        }
+
+        .card-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: 0.3s ease;
+            color: #000; /* TEXT FIX */
+        }
+
+        .card-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .card-header {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1d3557;
+        }
+
+        ul, li, p {
+            color: #000 !important; /* MAKE ALL TEXT FULLY VISIBLE */
+        }
+
+        .btn {
+            background: #1d3557;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-weight: 500;
+            color: white !important;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #0f223f;
+            transform: translateY(-3px);
+        }
+    </style>
+
+    {% block head_bl %}{% endblock %}
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>🗳 Blockchain E-Voting System</h2>
+        <a class="logout-btn" href="/login/">Logout</a>
+    </div>
+
+    {% block body_bl %}{% endblock %}
+
+</body>
+</html>
